@@ -97,6 +97,15 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Cormorant Garamond", "Georgia", serif;
+  }
+
+  :root {
+    --wedding-beige: #f5ede0;
+    --wedding-beige-light: #faf5ee;
+    --wedding-burgundy: #7b1e3c;
+    --wedding-burgundy-light: #9c2d50;
+    --wedding-black: #1a1a1a;
+    --wedding-gold: #c9a96e;
   }
 }

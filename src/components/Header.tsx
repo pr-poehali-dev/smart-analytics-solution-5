@@ -1,24 +1,16 @@
-interface HeaderProps {
-  className?: string;
-}
-
-export default function Header({ className }: HeaderProps) {
+export default function Header() {
   return (
-    <header className={`absolute top-0 left-0 right-0 z-10 p-6 ${className ?? ""}`}>
-      <div className="flex justify-between items-center">
-        <div className="text-white text-sm uppercase tracking-wide">lumino</div>
+    <header className="absolute top-0 left-0 right-0 z-20 p-6">
+      <div className="flex justify-center items-center">
         <nav className="flex gap-8">
-          <a
-            href="#about"
-            className="text-white hover:text-neutral-400 transition-colors duration-300 uppercase text-sm"
-          >
-            О нас
+          <a href="#details" className="text-white hover:opacity-70 transition-opacity uppercase text-xs tracking-widest font-light" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            Детали
           </a>
-          <a
-            href="#contact"
-            className="text-white hover:text-neutral-400 transition-colors duration-300 uppercase text-sm"
-          >
-            Контакты
+          <a href="#timing" className="text-white hover:opacity-70 transition-opacity uppercase text-xs tracking-widest font-light" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            Тайминг
+          </a>
+          <a href="#rsvp" className="text-white hover:opacity-70 transition-opacity uppercase text-xs tracking-widest font-light" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            Подтвердить
           </a>
         </nav>
       </div>

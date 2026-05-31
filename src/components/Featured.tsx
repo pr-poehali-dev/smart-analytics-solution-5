@@ -1,22 +1,65 @@
+import { useScroll, useTransform, motion } from "framer-motion";
+import { useRef } from "react";
+
 export default function Featured() {
+  const container = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["30px", "-30px"]);
+
   return (
-    <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center min-h-screen px-6 py-12 lg:py-0 bg-white">
-      <div className="flex-1 h-[400px] lg:h-[800px] mb-8 lg:mb-0 lg:order-2">
-        <img
-          src="/images/woman-horse.jpg"
-          alt="Woman on horse in countryside"
-          className="w-full h-full object-cover"
-        />
+    <div
+      id="details"
+      className="min-h-screen px-6 py-20 lg:py-0 flex flex-col lg:flex-row items-center"
+      style={{ backgroundColor: "var(--wedding-beige-light)" }}
+    >
+      <div className="flex-1 flex justify-center items-center lg:h-screen lg:order-2 mb-12 lg:mb-0">
+        <motion.div style={{ y }} className="w-72 h-96 md:w-80 md:h-[480px] overflow-hidden shadow-2xl">
+          <img
+            src="/images/exterior.png"
+            alt="Фото пары"
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
       </div>
-      <div className="flex-1 text-left lg:h-[800px] flex flex-col justify-center lg:mr-12 lg:order-1">
-        <h3 className="uppercase mb-4 text-sm tracking-wide text-neutral-600">Функции, которые не стоят на месте</h3>
-        <p className="text-2xl lg:text-4xl mb-8 text-neutral-900 leading-tight">
-          Не просто список возможностей — живые, дышащие акценты. Каждая функция адаптируется к движению, контексту и настроению,
-          оживляя продукт с первого взгляда.
+
+      <div className="flex-1 lg:order-1 flex flex-col justify-center lg:pr-16">
+        <p className="uppercase text-xs tracking-[0.3em] mb-6" style={{ color: "var(--wedding-burgundy)", fontFamily: "Montserrat, sans-serif" }}>
+          место проведения
         </p>
-        <button className="bg-black text-white border border-black px-4 py-2 text-sm transition-all duration-300 hover:bg-white hover:text-black cursor-pointer w-fit uppercase tracking-wide">
-          Подробнее
-        </button>
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-light italic mb-6 leading-tight" style={{ color: "var(--wedding-black)" }}>
+          Ресторан «Белый зал»
+        </h2>
+        <div className="w-16 h-px mb-6" style={{ backgroundColor: "var(--wedding-burgundy)", opacity: 0.4 }} />
+        <p className="text-lg font-light mb-4 leading-relaxed" style={{ color: "#5a4a42", fontFamily: "Montserrat, sans-serif" }}>
+          ул. Садовая, 12, Москва
+        </p>
+        <p className="text-base font-light leading-relaxed mb-8" style={{ color: "#5a4a42", fontFamily: "Montserrat, sans-serif" }}>
+          Торжество состоится в тёплой, романтической атмосфере с видом на реку. Мы с нетерпением ждём вас в этот особенный день.
+        </p>
+
+        <div className="mb-10">
+          <h3 className="text-xl font-light mb-4 italic" style={{ color: "var(--wedding-burgundy)" }}>Дресс-код</h3>
+          <div className="flex gap-4 flex-wrap">
+            <div className="flex items-center gap-3 px-4 py-3 border" style={{ borderColor: "var(--wedding-burgundy)", borderOpacity: 0.3 }}>
+              <div className="w-4 h-4 rounded-full" style={{ backgroundColor: "#f5ede0", border: "1px solid #c9a96e" }} />
+              <span className="text-sm tracking-wide" style={{ color: "var(--wedding-black)", fontFamily: "Montserrat, sans-serif" }}>Бежевый</span>
+            </div>
+            <div className="flex items-center gap-3 px-4 py-3 border" style={{ borderColor: "var(--wedding-burgundy)", borderOpacity: 0.3 }}>
+              <div className="w-4 h-4 rounded-full" style={{ backgroundColor: "#7b1e3c" }} />
+              <span className="text-sm tracking-wide" style={{ color: "var(--wedding-black)", fontFamily: "Montserrat, sans-serif" }}>Бордовый</span>
+            </div>
+            <div className="flex items-center gap-3 px-4 py-3 border" style={{ borderColor: "var(--wedding-burgundy)", borderOpacity: 0.3 }}>
+              <div className="w-4 h-4 rounded-full" style={{ backgroundColor: "#1a1a1a" }} />
+              <span className="text-sm tracking-wide" style={{ color: "var(--wedding-black)", fontFamily: "Montserrat, sans-serif" }}>Чёрный</span>
+            </div>
+          </div>
+          <p className="text-sm mt-3 font-light italic" style={{ color: "#8a7a72", fontFamily: "Montserrat, sans-serif" }}>
+            Пожалуйста, избегайте белого цвета в нарядах
+          </p>
+        </div>
       </div>
     </div>
   );
